@@ -1,0 +1,21 @@
+query RunInput {
+  cart {
+    deliveryGroups {
+      deliveryAddress {
+        countryCode
+        provinceCode
+        city
+      }
+      deliveryOptions {
+        handle
+        title
+        cost {
+          amount
+        }
+      }
+    }
+    attribute(key: "Codigo_DANE") {
+      value
+    }
+  }
+}

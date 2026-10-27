@@ -1,0 +1,14 @@
+api_version = "2026-04"
+
+[[extensions]]
+name = "Filtro de Pagos Colombia (Contra Entrega)"
+handle = "colombia-payment-customization"
+type = "function"
+
+  [[extensions.targeting]]
+  target = "purchase.payment-customization.run"
+  input_query = "src/run.graphql"
+  export = "run"
+
+  [extensions.build]
+  wasm_opt = true

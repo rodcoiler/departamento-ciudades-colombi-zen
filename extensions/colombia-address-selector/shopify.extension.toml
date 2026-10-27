@@ -1,0 +1,3 @@
+name = "Selector de Departamentos y Ciudades de Colombia"
+type = "theme"
+handle = "colombia-address-selector"

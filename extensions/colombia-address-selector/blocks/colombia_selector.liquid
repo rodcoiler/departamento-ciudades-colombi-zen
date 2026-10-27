@@ -1,0 +1,128 @@
+{% comment %}
+  Bloque de Tema: Selector de Departamentos y Ciudades de Colombia con Códigos DANE
+  Compatible con temas Online Store 2.0 (Dawn, Debutify, Impulse, etc.) y todos los planes Shopify.
+{% endcomment %}
+
+{{ 'colombia-selector.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="zen-colombia-selector-container"
+  id="zen-colombia-selector-{{ block.id }}"
+  data-block-id="{{ block.id }}"
+  data-app-url="{{ block.settings.app_url | default: 'https://departamentos-ciudades-colombia.codigozen.com' }}"
+  data-enable-barrios="{{ block.settings.enable_barrios }}"
+  data-required="{{ block.settings.is_required }}"
+>
+  <div class="zen-colombia-card">
+    <div class="zen-colombia-header">
+      <div class="zen-colombia-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      </div>
+      <div>
+        <h3 class="zen-colombia-title">{{ block.settings.title | default: '🇨🇴 Destino del Envío (Colombia)' }}</h3>
+        <p class="zen-colombia-subtitle">{{ block.settings.subtitle | default: 'Selecciona tu departamento y ciudad para calcular la tarifa exacta y evitar demoras' }}</p>
+      </div>
+    </div>
+
+    <!-- Dropdown Departamento -->
+    <div class="zen-form-group">
+      <label for="zen-department-select-{{ block.id }}" class="zen-label">
+        Departamento {% if block.settings.is_required %}<span class="zen-required">*</span>{% endif %}
+      </label>
+      <div class="zen-select-wrapper">
+        <select id="zen-department-select-{{ block.id }}" class="zen-select">
+          <option value="">Selecciona tu departamento...</option>
+        </select>
+        <span class="zen-select-arrow">▾</span>
+      </div>
+    </div>
+
+    <!-- Dropdown Municipio / Ciudad -->
+    <div class="zen-form-group">
+      <label for="zen-city-select-{{ block.id }}" class="zen-label">
+        Ciudad / Municipio {% if block.settings.is_required %}<span class="zen-required">*</span>{% endif %}
+      </label>
+      <div class="zen-select-wrapper">
+        <select id="zen-city-select-{{ block.id }}" class="zen-select" disabled>
+          <option value="">Primero elige un departamento...</option>
+        </select>
+        <span class="zen-select-arrow">▾</span>
+      </div>
+    </div>
+
+    <!-- Dropdown Barrio / Comuna (Opcional o según ciudad) -->
+    <div class="zen-form-group zen-barrio-group" id="zen-barrio-group-{{ block.id }}" style="display: none;">
+      <label for="zen-barrio-select-{{ block.id }}" class="zen-label">
+        Barrio / Comuna / Localidad
+      </label>
+      <div class="zen-select-wrapper">
+        <select id="zen-barrio-select-{{ block.id }}" class="zen-select">
+          <option value="">Selecciona tu barrio...</option>
+        </select>
+        <span class="zen-select-arrow">▾</span>
+      </div>
+      <input
+        type="text"
+        id="zen-barrio-input-{{ block.id }}"
+        class="zen-input"
+        placeholder="O escribe el nombre de tu barrio..."
+        style="display: none; margin-top: 6px;"
+      />
+    </div>
+
+    <!-- Badge informativo de código DANE seleccionado -->
+    <div class="zen-dane-badge" id="zen-dane-badge-{{ block.id }}" style="display: none;">
+      <span class="zen-badge-dot"></span>
+      <span class="zen-badge-text" id="zen-badge-text-{{ block.id }}"></span>
+    </div>
+
+    <!-- Feedback o Error -->
+    <div class="zen-feedback-msg" id="zen-feedback-{{ block.id }}" style="display: none;"></div>
+  </div>
+</div>
+
+<script src="{{ 'colombia-selector.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Selector Colombia (DANE)",
+  "target": "section",
+  "stylesheet": "colombia-selector.css",
+  "javascript": "colombia-selector.js",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "🇨🇴 Destino del Envío (Colombia)"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo / Instrucciones",
+      "default": "Selecciona tu departamento y ciudad para tarifas exactas de transportadora"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_barrios",
+      "label": "Habilitar selector de barrios para ciudades principales",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "is_required",
+      "label": "Campo requerido antes de ir al checkout",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "app_url",
+      "label": "URL de la App",
+      "default": "https://departamentos-ciudades-colombia.codigozen.com"
+    }
+  ]
+}
+{% endschema %}

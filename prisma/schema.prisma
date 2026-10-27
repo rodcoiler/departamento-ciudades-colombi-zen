@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.sqlite"
+}
+
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+}
+
+// App-specific models for Colombia Departments/Cities
+
+model AppSettings {
+  id                   String   @id @default(cuid())
+  shop                 String   @unique
+  isActive             Boolean  @default(true)
+  enableBarrios        Boolean  @default(true)
+  enableValidation     Boolean  @default(true)
+  enableDeliveryFilter Boolean  @default(true)
+  enablePaymentFilter  Boolean  @default(true)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+model DeliveryZone {
+  id             String   @id @default(cuid())
+  shop           String
+  name           String
+  zoneType       String   // "urbano", "regional", "nacional", "especial"
+  departmentCode String?
+  cityCode       String?
+  isActive       Boolean  @default(true)
+  shippingCost   Float?
+  estimatedDays  String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([shop])
+}
+
+model PaymentZone {
+  id                   String   @id @default(cuid())
+  shop                 String
+  departmentCode       String?
+  cityCode             String?
+  allowCashOnDelivery  Boolean  @default(false)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@index([shop])
+}

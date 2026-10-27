@@ -1,0 +1,8 @@
+{
+  "name": "Colombia Departments and Cities Selector",
+  "title": "🇨🇴 Shipping Destination (Colombia)",
+  "subtitle": "Select your department and city to get exact carrier rates and avoid delays",
+  "department_label": "Department / State",
+  "city_label": "City / Municipality",
+  "barrio_label": "Neighborhood / District"
+}

@@ -1,0 +1,14 @@
+api_version = "2026-04"
+
+[[extensions]]
+name = "Filtro de Envíos Colombia"
+handle = "colombia-delivery-customization"
+type = "function"
+
+  [[extensions.targeting]]
+  target = "purchase.delivery-customization.run"
+  input_query = "src/run.graphql"
+  export = "run"
+
+  [extensions.build]
+  wasm_opt = true

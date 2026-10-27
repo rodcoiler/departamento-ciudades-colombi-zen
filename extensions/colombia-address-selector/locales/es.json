@@ -1,0 +1,8 @@
+{
+  "name": "Selector de Departamentos y Ciudades de Colombia",
+  "title": "🇨🇴 Destino del Envío (Colombia)",
+  "subtitle": "Selecciona tu departamento y ciudad para calcular la tarifa exacta y evitar demoras",
+  "department_label": "Departamento",
+  "city_label": "Ciudad / Municipio",
+  "barrio_label": "Barrio / Comuna / Localidad"
+}
