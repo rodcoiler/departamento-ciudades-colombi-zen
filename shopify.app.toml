@@ -1,17 +1,29 @@
-# This file stores configurations for your Shopify app.
-# Replace client_id with your app's Client ID from the Partner Dashboard.
-client_id = ""
-name = "Departamentos y Ciudades de Colombia"
-handle = "departamentos-ciudades-colombia"
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "299fdbe8fb61912a32b8cd6207e31095"
+name = "Ciudades Colombia - CódigoZen"
 application_url = "https://departamentos-ciudades-colombia.codigozen.com"
 embedded = true
+handle = "departamentos-ciudades-colombia"
 
 [build]
-include_config_on_deploy = true
+
+[webhooks]
+api_version = "2026-10"
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/app/scopes_update"
+  topics = [ "app/scopes_update" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/app/uninstalled"
+  topics = [ "app/uninstalled" ]
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
 scopes = "read_products,read_orders,read_shipping,write_shipping"
+optional_scopes = [ ]
+use_legacy_install_flow = false
 
 [auth]
 redirect_urls = [
@@ -19,17 +31,6 @@ redirect_urls = [
   "https://departamentos-ciudades-colombia.codigozen.com/auth/shopify/callback",
   "https://departamentos-ciudades-colombia.codigozen.com/api/auth/callback"
 ]
-
-[webhooks]
-api_version = "2026-04"
-
-  [[webhooks.subscriptions]]
-  uri = "/webhooks/app/uninstalled"
-  topics = ["app/uninstalled"]
-
-  [[webhooks.subscriptions]]
-  topics = ["app/scopes_update"]
-  uri = "/webhooks/app/scopes_update"
 
 [pos]
 embedded = false

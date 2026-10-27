@@ -3,6 +3,7 @@ api_version = "2026-04"
 [[extensions]]
 name = "Filtro de Envíos Colombia"
 handle = "colombia-delivery-customization"
+uid = "ddcf1004-d324-63e6-acfa-4f7442f5ce807cc30f79"
 type = "function"
 
   [[extensions.targeting]]

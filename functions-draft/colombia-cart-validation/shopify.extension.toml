@@ -3,6 +3,7 @@ api_version = "2026-04"
 [[extensions]]
 name = "Validación DANE Colombia"
 handle = "colombia-cart-validation"
+uid = "5355bb38-2609-d6d2-a5a7-822c6c2f314336239741"
 type = "function"
 
   [[extensions.targeting]]

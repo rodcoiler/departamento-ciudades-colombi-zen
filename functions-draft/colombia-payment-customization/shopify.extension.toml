@@ -3,6 +3,7 @@ api_version = "2026-04"
 [[extensions]]
 name = "Filtro de Pagos Colombia (Contra Entrega)"
 handle = "colombia-payment-customization"
+uid = "dd4b2250-65f2-9ccd-db8f-1c02f047c1e67f82d5b4"
 type = "function"
 
   [[extensions.targeting]]
