@@ -17,6 +17,16 @@ export const headers: HeadersFunction = (headersArgs) => {
 };
 
 export function ErrorBoundary() {
-  return boundary.error(useRouteError());
+  const error = useRouteError();
+  try {
+    return boundary.error(error);
+  } catch {
+    return (
+      <div style={{ padding: "2rem", fontFamily: "system-ui, sans-serif" }}>
+        <h2>Error de autenticación</h2>
+        <p>{error instanceof Error ? error.message : "Error inesperado"}</p>
+      </div>
+    );
+  }
 }
 
