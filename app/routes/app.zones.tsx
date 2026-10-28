@@ -177,7 +177,7 @@ export default function Zones() {
   return (
     <Page
       title="Zonas de Envío y Pagos (Shopify Functions)"
-      backAction={{ content: "Inicio", url: "/app" }}
+      backAction={{ content: "Inicio", url: "/" }}
       subtitle="Filtra métodos de envío y Pago Contra Entrega según la ubicación DANE"
     >
       <BlockStack gap="500">

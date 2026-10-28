@@ -105,7 +105,7 @@ export default function Explorer() {
   return (
     <Page
       title="Explorador DANE Colombia"
-      backAction={{ content: "Inicio", url: "/app" }}
+      backAction={{ content: "Inicio", url: "/" }}
       subtitle="Consulta oficial de 33 Departamentos, 1,122+ Municipios y Códigos DIVIPOLA"
     >
       <BlockStack gap="500">

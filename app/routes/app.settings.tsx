@@ -92,7 +92,7 @@ export default function Settings() {
   return (
     <Page
       title="Configuración de la App"
-      backAction={{ content: "Inicio", url: "/app" }}
+      backAction={{ content: "Inicio", url: "/" }}
       subtitle="Personaliza las reglas de normalización DANE y validación para tu tienda"
     >
       <BlockStack gap="500">

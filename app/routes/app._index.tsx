@@ -271,7 +271,7 @@ export default function Index() {
 
                 <BlockStack gap="300">
                   <Button
-                    url="/app/settings"
+                    url="/settings"
                     icon={SettingsIcon}
                     fullWidth
                     variant="secondary"
@@ -279,7 +279,7 @@ export default function Index() {
                     Configuración de la App
                   </Button>
                   <Button
-                    url="/app/zones"
+                    url="/zones"
                     icon={DeliveryIcon}
                     fullWidth
                     variant="secondary"
@@ -287,7 +287,7 @@ export default function Index() {
                     Gestionar Zonas de Envío
                   </Button>
                   <Button
-                    url="/app/explorer"
+                    url="/explorer"
                     icon={LocationIcon}
                     fullWidth
                     variant="secondary"
