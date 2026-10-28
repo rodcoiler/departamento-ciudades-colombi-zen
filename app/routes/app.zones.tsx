@@ -1,5 +1,12 @@
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
-import { Form, useActionData, useLoaderData, useNavigation } from "react-router";
+import {
+  Form,
+  isRouteErrorResponse,
+  useActionData,
+  useLoaderData,
+  useNavigation,
+  useRouteError,
+} from "react-router";
 import { useState } from "react";
 import {
   Page,
@@ -334,3 +341,21 @@ export default function Zones() {
     </Page>
   );
 }
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  const message = isRouteErrorResponse(error)
+    ? `${error.status} ${error.statusText}`
+    : error instanceof Error
+    ? error.message
+    : "Error inesperado al gestionar zonas";
+
+  return (
+    <Page title="Zonas de Envío y Pagos" backAction={{ content: "Inicio", url: "/" }}>
+      <Banner tone="critical" title="Error en Zonas">
+        <p>{message}</p>
+      </Banner>
+    </Page>
+  );
+}
+

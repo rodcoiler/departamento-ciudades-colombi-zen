@@ -1,0 +1,34 @@
+{% comment %}
+  Incrustación de App: Selector de Departamentos y Ciudades de Colombia
+  Aparece en la pestaña 'Incrustaciones de apps' del Editor de Temas
+{% endcomment %}
+
+{{ 'colombia-selector.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'colombia-selector.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Selector Colombia (DANE)",
+  "target": "body",
+  "stylesheet": "colombia-selector.css",
+  "javascript": "colombia-selector.js",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Activa esta incrustación para habilitar el selector DANE y la normalización de direcciones en tu tienda."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_barrios",
+      "label": "Habilitar selector de barrios (ciudades principales)",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "app_url",
+      "label": "URL de la App",
+      "default": "https://departamentos-ciudades-colombia.codigozen.com"
+    }
+  ]
+}
+{% endschema %}
